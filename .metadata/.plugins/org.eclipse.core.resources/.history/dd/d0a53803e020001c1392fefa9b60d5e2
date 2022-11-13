@@ -1,0 +1,115 @@
+package Interfaz;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+public class Interface extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Interface frame = new Interface();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Interface() {
+		setResizable(false);
+		setTitle("ING_ MILLER JARAMILLO");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 590, 405);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblTitulo = new JLabel("\u00BF ME DESEAS ?");
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblTitulo.setBounds(130, 11, 300, 49);
+		contentPane.add(lblTitulo);
+		
+		JButton btnNo = new JButton("NO");
+		btnNo.setForeground(new Color(255, 69, 0));
+		btnNo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			
+			
+				int btnNoIzquierda = contentPane.getWidth() - btnNo.getWidth();
+				int btnNoDerecha = contentPane.getHeight() - btnNo.getHeight();
+				
+				int x = (int)Math.round(btnNoIzquierda*Math.random());
+				int y = (int)Math.round(btnNoDerecha*Math.random());
+				btnNo.setLocation(x,y);
+			}
+		});
+		
+		btnNo.setFont(new Font("Tahoma", Font.BOLD, 25));
+		btnNo.setBounds(297, 316, 86, 49);
+		
+		btnNo.setOpaque(false);
+		btnNo.setBorder(new RoundedBorder(20));
+		btnNo.setFocusPainted(false);
+		  btnNo.setContentAreaFilled(false);
+		contentPane.add(btnNo);
+		
+		JButton btnSi = new JButton("SI");
+		btnSi.setBackground(new Color(135, 206, 250));
+		btnSi.setForeground(Color.WHITE);
+		btnSi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				 JOptionPane.showMessageDialog(null, "UFF QUE RICURA Bb !!");
+			}
+		});
+		btnSi.setFont(new Font("Tahoma", Font.BOLD, 25));
+		btnSi.setBounds(181, 316, 86, 49);
+		
+		
+		btnSi.setFocusPainted(false);
+		btnSi.setOpaque(false);
+		  btnSi.setBorder(new RoundedBorder(20));
+		
+		 
+		contentPane.add(btnSi);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("E:\\Hobby\\Love\\Images\\fondo3.gif"));
+		lblNewLabel.setEnabled(true);
+		lblNewLabel.setBounds(0, 0, 574, 366);
+		contentPane.add(lblNewLabel);
+	}
+	
+	
+}
